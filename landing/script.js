@@ -82,7 +82,7 @@
     // Il timbro atterra a ~1.3s: tremolio, vibrazione e coriandoli
     timers.push(setTimeout(() => {
       intro.classList.add("shake");
-      if (navigator.vibrate) navigator.vibrate([60, 40, 90]);
+      try { navigator.vibrate && navigator.vibrate([60, 40, 90]); } catch (_) {}
       burst(70);
     }, 1300));
     timers.push(setTimeout(end, 2500));
