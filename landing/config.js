@@ -9,5 +9,5 @@ window.STALLONI_CONFIG = {
 
   // "formspree" legge la risposta del server; "google" invia in modalità no-cors
   // (Apps Script non restituisce header CORS, quindi la risposta non è leggibile).
-  PROVIDER: "formspree",
+  PROVIDER: "google",
 };

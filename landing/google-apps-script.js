@@ -6,6 +6,17 @@ const COLUMNS = [
 ];
 
 function doPost(e) {
+  // Evita righe sovrapposte se arrivano più iscrizioni insieme
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    return saveRow(e);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function saveRow(e) {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
   if (sheet.getLastRow() === 0) sheet.appendRow(COLUMNS);
 
