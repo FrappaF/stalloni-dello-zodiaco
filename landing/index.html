@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sei stato stallonato! · Stalloni dello Zodiaco</title>
+  <meta name="description" content="Hai scansionato il QR sbagliato. O quello giusto. Entra nella mandria degli Stalloni dello Zodiaco.">
+  <meta name="theme-color" content="#0b0716">
+  <meta property="og:title" content="Sei stato stallonato! 🐴">
+  <meta property="og:description" content="Entra nella mandria degli Stalloni dello Zodiaco.">
+  <meta property="og:image" content="assets/og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <img class="logo" src="assets/logo.webp" width="720" height="720"
+           alt="Logo Stalloni dello Zodiaco: un cavallo con la criniera piena di segni zodiacali">
+      <h1 class="headline" aria-label="Sei stato stallonato!">
+        <span class="line">Sei stato</span>
+        <span class="line big" id="stallonato">stallonato!</span>
+      </h1>
+      <p class="sub">Hai scansionato il QR. Ormai è tardi.<br>Le stelle hanno parlato e hanno detto: <strong>nitrisci</strong>.</p>
+      <a class="btn" href="#mandria">Accetto il mio destino 🐴</a>
+      <p class="tiny">Nessun cavallo è stato maltrattato. Qualche fegato sì.</p>
+    </section>
+
+    <!-- OROSCOPO SCHERZOSO -->
+    <section class="card horoscope" aria-live="polite">
+      <p class="kicker">Il tuo oroscopo stallone di oggi</p>
+      <p class="prophecy" id="prophecy">Mercurio è retrogrado, tu invece vai avanti a birre.</p>
+      <button class="btn ghost" type="button" id="reroll">Un'altra profezia ✨</button>
+    </section>
+
+    <!-- FORM -->
+    <section class="card" id="mandria">
+      <h2>Entra nella mandria</h2>
+      <p class="lead">Lasciaci numero ed email: ti avvisiamo per serate, giochi, tornei e cavolate cosmiche. Niente spam, giuriamo sulla Luna.</p>
+
+      <form id="signup" novalidate>
+        <label class="field">
+          <span>Come ti chiamano gli amici</span>
+          <input name="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Es. Purosangue Marco" required>
+        </label>
+
+        <label class="field">
+          <span>Telefono (WhatsApp)</span>
+          <input name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+39 333 123 4567" required>
+        </label>
+
+        <label class="field">
+          <span>Email</span>
+          <input name="email" type="email" inputmode="email" autocomplete="email" placeholder="stallone@esempio.it" required>
+        </label>
+
+        <label class="field">
+          <span>Il tuo segno <em>(per giudicarti)</em></span>
+          <select name="segno">
+            <option value="">Scegli il segno…</option>
+            <option>♈ Ariete</option><option>♉ Toro</option><option>♊ Gemelli</option>
+            <option>♋ Cancro</option><option>♌ Leone</option><option>♍ Vergine</option>
+            <option>♎ Bilancia</option><option>♏ Scorpione</option><option>♐ Sagittario</option>
+            <option>♑ Capricorno</option><option>♒ Acquario</option><option>♓ Pesci</option>
+          </select>
+        </label>
+
+        <!-- honeypot anti-bot: gli umani non lo vedono -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <fieldset class="consents">
+          <legend class="sr-only">Consensi</legend>
+          <label class="check">
+            <input type="checkbox" name="eta" required>
+            <span>Ho almeno 16 anni. Se ho meno di 18 anni, i miei genitori sanno che ho scansionato un QR di cavalli.</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="privacy" required>
+            <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per ricevere comunicazioni della community via WhatsApp, SMS ed email. *</span>
+          </label>
+        </fieldset>
+
+        <p class="error" id="formError" role="alert" hidden></p>
+        <button class="btn submit" type="submit" id="submitBtn">Fammi stallone 🔥</button>
+        <p class="tiny">* Puoi disiscriverti quando vuoi, basta scriverci.</p>
+      </form>
+
+      <div class="success" id="success" hidden>
+        <p class="emoji" aria-hidden="true">🐴✨</p>
+        <h2>Benvenuto nella mandria!</h2>
+        <p>Ora sei ufficialmente uno stallone. Ci sentiamo presto, tieni il telefono carico.</p>
+        <button class="btn" type="button" id="shareBtn">Stallona un amico 📲</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Stalloni dello Zodiaco · <a href="privacy.html">Privacy</a></p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
