@@ -20,6 +20,13 @@
 <body>
   <div class="sky" aria-hidden="true"></div>
 
+  <!-- INTRO: timbro "STALLONATO!" con esplosione di coriandoli. Tocca per saltare. -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <img class="intro-logo" src="assets/logo.webp" alt="">
+    <div class="stamp">Stallonato!</div>
+  </div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
   <main>
     <!-- HERO -->
     <section class="hero">
@@ -62,16 +69,11 @@
           <input name="email" type="email" inputmode="email" autocomplete="email" placeholder="stallone@esempio.it" required>
         </label>
 
-        <label class="field">
-          <span>Il tuo segno <em>(per giudicarti)</em></span>
-          <select name="segno">
-            <option value="">Scegli il segno…</option>
-            <option>♈ Ariete</option><option>♉ Toro</option><option>♊ Gemelli</option>
-            <option>♋ Cancro</option><option>♌ Leone</option><option>♍ Vergine</option>
-            <option>♎ Bilancia</option><option>♏ Scorpione</option><option>♐ Sagittario</option>
-            <option>♑ Capricorno</option><option>♒ Acquario</option><option>♓ Pesci</option>
-          </select>
-        </label>
+        <fieldset class="field personaggi">
+          <legend>Che stallone sei? <em>(scegline uno, ti giudicheremo)</em></legend>
+          <div class="chips" id="chips"></div>
+          <p class="verdict" id="verdict" aria-live="polite"></p>
+        </fieldset>
 
         <!-- honeypot anti-bot: gli umani non lo vedono -->
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">

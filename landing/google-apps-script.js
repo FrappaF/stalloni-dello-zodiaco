@@ -1,7 +1,7 @@
 // Da incollare in Google Sheets → Estensioni → Apps Script (vedi README.md).
 // Ogni iscrizione diventa una riga nel primo foglio.
 const COLUMNS = [
-  "ricevuto_il", "nome", "telefono", "email", "segno",
+  "ricevuto_il", "nome", "telefono", "email", "personaggio",
   "eta_16_plus", "consenso_privacy", "consenso_timestamp", "fonte", "pagina",
 ];
 
