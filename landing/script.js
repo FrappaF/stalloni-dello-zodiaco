@@ -127,18 +127,18 @@
   document.getElementById("reroll").addEventListener("click", reroll);
   reroll();
 
-  // Personaggi al posto dei segni zodiacali
+  // Classi in stile D&D al posto dei segni zodiacali: [icona, classe, abilità speciale]
   const PERSONAGGI = [
-    ["🧙", "Il Master di D&D che uccide tutti", "Un Master. Il party non sopravvive, ma la serata sì."],
-    ["🎮", "Il Rage Quitter seriale", "Il joystick ha già chiesto il trasferimento."],
-    ["🤓", "Quello che corregge la lore", "Tecnicamente avresti ragione. Tecnicamente."],
-    ["🪩", "L'ultimo a lasciare la pista", "Il DJ ti conosce per nome. E ha paura."],
-    ["🥃", "Quello del «dai, ultimo shottino»", "Non era l'ultimo. Non lo è mai."],
-    ["📋", "Il PR che ti mette in lista", "Sei in lista. Sei sempre in lista."],
-    ["🌷", "Il filosofo di Amsterdam", "Hai capito l'universo. Poi te lo sei scordato."],
-    ["🚲", "Il ciclista perso sui canali", "Cercavi la Centrale, hai trovato tre volte lo stesso ponte."],
-    ["💃", "Il socio del club di Barcellona", "Tessera, siesta, fiesta. In quest'ordine."],
-    ["🍕", "Il cacciatore di snack delle 3", "Il frigo ha un tuo ritratto in cornice."],
+    ["🧙", "Mago della Lore", "Lancia «In realtà…» a volontà. Nessuno sopravvive a una discussione su Star Wars."],
+    ["🪓", "Barbaro del Rage Quit", "Ira: +10 alla forza contro joystick e tastiere. Danni permanenti al divano."],
+    ["🎲", "Chierico del Tiro Critico", "Prega su ogni dado prima di tirarlo. Fa 1. Sempre."],
+    ["🪩", "Bardo della Pista", "Ispirazione bardica: chi balla con te resta in pista fino alla chiusura."],
+    ["🥃", "Paladino dell'Ultimo Shottino", "Giuramento sacro: «Dai, l'ultimo». Non l'ha mai rispettato."],
+    ["🗝️", "Ladro della Lista VIP", "Furtività leggendaria: entra ovunque, non paga mai l'ingresso."],
+    ["🌷", "Druido di Amsterdam", "Parla con le piante. Le piante rispondono. Lui annuisce, serissimo."],
+    ["🚲", "Ranger dei Canali", "Orientamento: −5. Ha attraversato lo stesso ponte sei volte e lo rifarebbe."],
+    ["💃", "Warlock di Barcellona", "Ha stretto un patto con un club. Il patron chiede in cambio solo la siesta."],
+    ["🍕", "Monaco degli Snack delle 3", "Digiuno ascetico tutto il giorno. Alle 3 di notte svuota il frigo in un turno."],
   ];
   const chips = document.getElementById("chips");
   const verdict = document.getElementById("verdict");
@@ -151,7 +151,7 @@
     input.value = name;
     l.querySelector(".ico").textContent = ico;
     l.querySelector(".name").textContent = name;
-    input.addEventListener("change", () => { verdict.textContent = line; });
+    input.addEventListener("change", () => { verdict.textContent = "Abilità speciale: " + line; });
     chips.appendChild(l);
   });
 
