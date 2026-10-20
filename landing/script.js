@@ -181,12 +181,35 @@
           headers: { Accept: "application/json" },
           body: data,
         });
-        if (!res.ok) throw new Error("HTTP " + res.status);
+        if (!res.ok) {
+          // Formspree spiega il motivo in JSON: lo riportiamo per capire cosa non va
+          let detail = "";
+          try {
+            const body = await res.json();
+            detail = (body.errors || []).map((x) => x.message).join(", ") || body.error || "";
+          } catch (_) {}
+          throw new Error("HTTP " + res.status + (detail ? ": " + detail : ""));
+        }
       }
     } finally {
       button.disabled = false;
       button.textContent = label;
     }
+  }
+
+  // Piano B: invio classico del form (pagina di conferma di Formspree),
+  // funziona anche quando l'invio in background viene rifiutato
+  function nativeSubmit(fields) {
+    const f = document.createElement("form");
+    f.method = "POST";
+    f.action = cfg.FORM_ENDPOINT;
+    Object.entries(fields).forEach(([k, v]) => {
+      const i = document.createElement("input");
+      i.type = "hidden"; i.name = k; i.value = v;
+      f.appendChild(i);
+    });
+    document.body.appendChild(f);
+    f.submit();
   }
 
   function show(el) {
@@ -233,22 +256,27 @@
     // Bot che compilano il campo nascosto: fingiamo successo e non inviamo nulla
     if (form.elements._gotcha.value) return show(profile);
 
+    const fields = {
+      step: "iscrizione",
+      contatto,
+      tipo_contatto: tipo,
+      [tipo]: contatto,
+      eta_16_plus: "si",
+      consenso_privacy: "si",
+      consenso_timestamp: new Date().toISOString(),
+      fonte,
+      pagina: location.href,
+    };
     try {
-      await send({
-        step: "iscrizione",
-        contatto,
-        tipo_contatto: tipo,
-        [tipo]: contatto,
-        eta_16_plus: "si",
-        consenso_privacy: "si",
-        consenso_timestamp: new Date().toISOString(),
-        fonte,
-        pagina: location.href,
-      }, btn, "Un attimo…");
+      await send(fields, btn, "Un attimo…");
       show(profile);
     } catch (err) {
       console.error(err);
-      showError(errorBox, "Non siamo riusciti a salvarti. Controlla la connessione e riprova.");
+      if (cfg.PROVIDER !== "google" && navigator.onLine !== false) {
+        showError(errorBox, "Ti porto alla pagina di conferma…");
+        return nativeSubmit(fields);
+      }
+      showError(errorBox, "Non siamo riusciti a salvarti (" + err.message + "). Controlla la connessione e riprova.");
     }
   });
 
