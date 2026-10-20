@@ -347,3 +347,31 @@ body.shake main { animation: shake .45s cubic-bezier(.36, .07, .19, .97); }
 .about-list strong { display: block; color: var(--text); font-size: 17px; }
 .about-list div { color: var(--muted); font-size: 15px; min-width: 0; }
 .about-note { margin: 16px 0 0; font-size: 15px; color: var(--lime); }
+
+/* Bottoni community */
+.join { display: grid; gap: 12px; }
+.join h2, .join .lead { margin: 0; }
+.btn.wa, .btn.ig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 17px 18px;
+  font-size: 18px;
+  color: #fff;
+}
+.btn.wa svg, .btn.ig svg { width: 24px; height: 24px; flex: none; }
+.btn.wa { background: #1fae54; box-shadow: 0 6px 0 #0d5a2a, 0 0 22px rgba(37, 211, 102, .4); }
+.btn.wa:active { box-shadow: 0 2px 0 #0d5a2a; }
+.btn.ig {
+  background: linear-gradient(45deg, #f58529, #dd2a7b 45%, #8134af 80%, #515bd4);
+  box-shadow: 0 6px 0 #4a1660, 0 0 22px rgba(221, 42, 123, .4);
+}
+.btn.ig:active { box-shadow: 0 2px 0 #4a1660; }
+.btn.soon { opacity: .55; cursor: default; pointer-events: none; }
+
+.or { display: flex; align-items: center; gap: 10px; margin: 10px 0 0; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; }
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: #3a2a66; }
+#signup h3 { margin: 0; font-size: 17px; }
+#signup .submit { font-size: 17px; padding: 14px; }

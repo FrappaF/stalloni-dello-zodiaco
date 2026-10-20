@@ -41,14 +41,32 @@
 
     <!-- FORM: un solo campo, il resto dopo -->
     <section class="card" id="mandria">
+      <div class="join" id="join">
+        <h2>Entra nella mandria</h2>
+        <p class="lead">Il modo più veloce è il gruppo WhatsApp: lì trovi le prossime uscite, i tavoli di gioco e tutta la gente.</p>
+        <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+          <span>Entra nel gruppo WhatsApp</span>
+        </a>
+        <a class="btn ig" id="igBtn" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0ZM21.9 8c-.1-1.6-.4-3-1.6-4.2C19 2.6 17.6 2.2 16 2.1c-1.6-.1-6.4-.1-8 0-1.6.1-3 .4-4.2 1.6C2.6 5 2.2 6.4 2.1 8c-.1 1.6-.1 6.4 0 8 .1 1.6.4 3 1.6 4.2 1.2 1.2 2.6 1.6 4.2 1.7 1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.7 1.2-1.2 1.6-2.6 1.7-4.2.1-1.6.1-6.4 0-8Zm-2.1 9.7a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.3 3.3 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7Z"/></svg>
+          <span>Seguici su Instagram</span>
+        </a>
+        <ul class="trust">
+          <li>Gratis, niente da comprare</li>
+          <li>Nessuno spam</li>
+          <li>Esci quando vuoi</li>
+        </ul>
+      </div>
+
       <form id="signup" novalidate>
-        <h2>Unisciti alla mandria</h2>
-        <p class="lead">Lasciaci l'email o il numero WhatsApp: ti aggiungiamo alla community e ti avvisiamo della prossima uscita.</p>
+        <p class="or"><span>oppure</span></p>
+        <h3>Preferisci che ti scriviamo noi?</h3>
 
         <label class="field">
-          <span class="sr-only">Email o numero WhatsApp</span>
-          <input name="contatto" id="contatto" type="text" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"
-                 placeholder="Email o numero WhatsApp" required>
+          <span class="sr-only">Numero di telefono o nome utente Instagram</span>
+          <input name="contatto" id="contatto" type="text" autocomplete="tel" autocapitalize="off" spellcheck="false"
+                 placeholder="Numero o @instagram" required>
         </label>
 
         <!-- honeypot anti-bot: gli umani non lo vedono -->
@@ -60,12 +78,7 @@
         </label>
 
         <p class="error" id="formError" role="alert" hidden></p>
-        <button class="btn submit" type="submit" id="submitBtn">Ci sto 🐴</button>
-        <ul class="trust">
-          <li>Gratis, niente da comprare</li>
-          <li>Nessuno spam</li>
-          <li>Esci quando vuoi</li>
-        </ul>
+        <button class="btn ghost submit" type="submit" id="submitBtn">Scrivetemi voi</button>
       </form>
 
       <!-- STEP 2: facoltativo, dopo l'iscrizione -->
