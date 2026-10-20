@@ -36,37 +36,52 @@
         <span class="line">Sei stato</span>
         <span class="line big" id="stallonato">stallonato!</span>
       </h1>
-      <p class="sub">Hai scansionato il QR. Ormai è tardi.<br>Le stelle hanno parlato e hanno detto: <strong>nitrisci</strong>.</p>
-      <a class="btn" href="#mandria">Accetto il mio destino 🐴</a>
-      <p class="tiny">Nessun cavallo è stato maltrattato. Qualche fegato sì.</p>
+      <p class="sub">Hai trovato uno dei nostri QR. Noi siamo gli <strong>Stalloni dello Zodiaco</strong>: un gruppo di gente presa bene che si ritrova per serate, giochi e tante risate.</p>
     </section>
 
-    <!-- OROSCOPO SCHERZOSO -->
-    <section class="card horoscope" aria-live="polite">
-      <p class="kicker">Il tuo oroscopo stallone di oggi</p>
-      <p class="prophecy" id="prophecy">Mercurio è retrogrado, tu invece vai avanti a birre.</p>
-      <button class="btn ghost" type="button" id="reroll">Un'altra profezia ✨</button>
-    </section>
-
-    <!-- FORM -->
+    <!-- FORM: un solo campo, il resto dopo -->
     <section class="card" id="mandria">
-      <h2>Entra nella mandria</h2>
-      <p class="lead">Lasciaci numero ed email: ti avvisiamo per serate, giochi, tornei e cavolate cosmiche. Niente spam, giuriamo sulla Luna.</p>
-
       <form id="signup" novalidate>
+        <h2>Unisciti alla mandria</h2>
+        <p class="lead">Lasciaci l'email o il numero WhatsApp: ti aggiungiamo alla community e ti avvisiamo della prossima uscita.</p>
+
+        <label class="field">
+          <span class="sr-only">Email o numero WhatsApp</span>
+          <input name="contatto" id="contatto" type="text" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"
+                 placeholder="Email o numero WhatsApp" required>
+        </label>
+
+        <!-- honeypot anti-bot: gli umani non lo vedono -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <label class="check">
+          <input type="checkbox" name="privacy" id="privacy" required>
+          <span>Ho almeno 16 anni e accetto l'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a> per ricevere i messaggi della community.</span>
+        </label>
+
+        <p class="error" id="formError" role="alert" hidden></p>
+        <button class="btn submit" type="submit" id="submitBtn">Ci sto 🐴</button>
+        <ul class="trust">
+          <li>Gratis, niente da comprare</li>
+          <li>Nessuno spam</li>
+          <li>Esci quando vuoi</li>
+        </ul>
+      </form>
+
+      <!-- STEP 2: facoltativo, dopo l'iscrizione -->
+      <form id="profile" novalidate hidden>
+        <p class="emoji" aria-hidden="true">🐴✨</p>
+        <h2>Sei dentro!</h2>
+        <p class="lead">Ti scriviamo presto. Se ti va, raccontaci qualcosa di te. Sono tutte domande facoltative.</p>
+
         <label class="field">
           <span>Come ti chiamano gli amici</span>
-          <input name="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Es. Purosangue Marco" required>
+          <input name="nome" id="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Es. Marco">
         </label>
 
-        <label class="field">
-          <span>Telefono (WhatsApp)</span>
-          <input name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+39 333 123 4567" required>
-        </label>
-
-        <label class="field">
-          <span>Email</span>
-          <input name="email" type="email" inputmode="email" autocomplete="email" placeholder="stallone@esempio.it" required>
+        <label class="field" id="altroField">
+          <span id="altroLabel">Anche il numero WhatsApp?</span>
+          <input name="altro" id="altro" type="text">
         </label>
 
         <fieldset class="field personaggi">
@@ -75,32 +90,28 @@
           <p class="verdict" id="verdict" aria-live="polite"></p>
         </fieldset>
 
-        <!-- honeypot anti-bot: gli umani non lo vedono -->
-        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <fieldset class="consents">
-          <legend class="sr-only">Consensi</legend>
-          <label class="check">
-            <input type="checkbox" name="eta" required>
-            <span>Ho almeno 16 anni. Se ho meno di 18 anni, i miei genitori sanno che ho scansionato un QR di cavalli.</span>
-          </label>
-          <label class="check">
-            <input type="checkbox" name="privacy" required>
-            <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per ricevere comunicazioni della community via WhatsApp, SMS ed email. *</span>
-          </label>
-        </fieldset>
-
-        <p class="error" id="formError" role="alert" hidden></p>
-        <button class="btn submit" type="submit" id="submitBtn">Fammi stallone 🔥</button>
-        <p class="tiny">* Puoi disiscriverti quando vuoi, basta scriverci.</p>
+        <p class="error" id="profileError" role="alert" hidden></p>
+        <button class="btn submit" type="submit" id="profileBtn">Salva</button>
+        <button class="linkbtn" type="button" id="skipBtn">Salta, va bene così</button>
       </form>
 
       <div class="success" id="success" hidden>
-        <p class="emoji" aria-hidden="true">🐴✨</p>
+        <p class="emoji" aria-hidden="true">🍻</p>
         <h2>Benvenuto nella mandria!</h2>
-        <p>Ora sei ufficialmente uno stallone. Ci sentiamo presto, tieni il telefono carico.</p>
-        <button class="btn" type="button" id="shareBtn">Stallona un amico 📲</button>
+        <p>Ci vediamo alla prossima. Porta qualcuno, più siamo meglio è.</p>
+        <button class="btn" type="button" id="shareBtn">Manda il QR a un amico 📲</button>
       </div>
+    </section>
+
+    <!-- CHI SIAMO: chiarisce che è una community, non una pubblicità -->
+    <section class="about">
+      <h2>Cosa facciamo</h2>
+      <ul class="about-list">
+        <li><span aria-hidden="true">🍻</span><div><strong>Serate</strong>Uscite, aperitivi e notti lunghe con gente nuova e simpatica.</div></li>
+        <li><span aria-hidden="true">🎲</span><div><strong>Game night</strong>D&amp;D, giochi da tavolo, carte e tornei. Anche se non hai mai giocato.</div></li>
+        <li><span aria-hidden="true">✈️</span><div><strong>In giro</strong>Weekend e trasferte di gruppo, da Amsterdam a Barcellona.</div></li>
+      </ul>
+      <p class="about-note">Niente abbonamenti, niente vendite. Siamo un gruppo di amici che è cresciuto un po' troppo.</p>
     </section>
   </main>
 
