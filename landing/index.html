@@ -4,132 +4,188 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Sei stato stallonato! · Stalloni dello Zodiaco</title>
-  <meta name="description" content="Hai scansionato il QR sbagliato. O quello giusto. Entra nella mandria degli Stalloni dello Zodiaco.">
-  <meta name="theme-color" content="#0b0716">
+  <meta name="description" content="Stalloni dello Zodiaco: una community di gente presa bene tra serate, game night e viaggi. Entra nella mandria.">
+  <meta name="theme-color" content="#080910">
   <meta property="og:title" content="Sei stato stallonato! 🐴">
-  <meta property="og:description" content="Entra nella mandria degli Stalloni dello Zodiaco.">
+  <meta property="og:description" content="Serate, game night e viaggi con gente presa bene. Entra nella mandria degli Stalloni dello Zodiaco.">
   <meta property="og:image" content="assets/og.jpg">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/brand/logo-completo.webp">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-
   <!-- INTRO: timbro "STALLONATO!" con esplosione di coriandoli. Tocca per saltare. -->
   <div class="intro" id="intro" aria-hidden="true">
-    <img class="intro-logo" src="assets/logo.webp" alt="">
+    <img class="intro-logo" src="assets/brand/logo-completo.webp" alt="">
     <div class="stamp">Stallonato!</div>
   </div>
   <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
 
-  <main>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Stalloni dello Zodiaco, torna su">
+        <img src="assets/brand/simbolo-stalloni.webp" width="40" height="40" alt="">
+        <span>Stalloni dello Zodiaco</span>
+      </a>
+      <a class="button button-primary button-small" href="#mandria">Entra</a>
+    </div>
+  </header>
+
+  <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <img class="logo" src="assets/logo.webp" width="720" height="720"
-           alt="Logo Stalloni dello Zodiaco: un cavallo con la criniera piena di segni zodiacali">
-      <h1 class="headline" aria-label="Sei stato stallonato!">
-        <span class="line">Sei stato</span>
-        <span class="line big" id="stallonato">stallonato!</span>
-      </h1>
-      <p class="sub">Hai trovato uno dei nostri QR. Noi siamo gli <strong>Stalloni dello Zodiaco</strong>: un gruppo di gente presa bene che si ritrova per serate, giochi e tante risate.</p>
-    </section>
-
-    <!-- FORM: un solo campo, il resto dopo -->
-    <section class="card" id="mandria">
-      <div class="join" id="join">
-        <h2>Entra nella mandria</h2>
-        <p class="lead">Il modo più veloce è il gruppo WhatsApp: lì trovi le prossime uscite, i tavoli di gioco e tutta la gente.</p>
-        <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
-          <span>Entra nel gruppo WhatsApp</span>
-        </a>
-        <a class="btn ig" id="igBtn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0ZM21.9 8c-.1-1.6-.4-3-1.6-4.2C19 2.6 17.6 2.2 16 2.1c-1.6-.1-6.4-.1-8 0-1.6.1-3 .4-4.2 1.6C2.6 5 2.2 6.4 2.1 8c-.1 1.6-.1 6.4 0 8 .1 1.6.4 3 1.6 4.2 1.2 1.2 2.6 1.6 4.2 1.7 1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.7 1.2-1.2 1.6-2.6 1.7-4.2.1-1.6.1-6.4 0-8Zm-2.1 9.7a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.3 3.3 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7Z"/></svg>
-          <span>Seguici su Instagram</span>
-        </a>
-        <ul class="trust">
-          <li>Gratis, niente da comprare</li>
-          <li>Nessuno spam</li>
-          <li>Esci quando vuoi</li>
-        </ul>
-      </div>
-
-      <form id="signup" novalidate>
-        <p class="or"><span>oppure</span></p>
-        <h3>Preferisci che ti scriviamo noi?</h3>
-
-        <label class="field">
-          <span class="sr-only">Numero di telefono o nome utente Instagram</span>
-          <input name="contatto" id="contatto" type="text" autocomplete="tel" autocapitalize="off" spellcheck="false"
-                 placeholder="Numero o @instagram" required>
-        </label>
-
-        <!-- honeypot anti-bot: gli umani non lo vedono -->
-        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <label class="check">
-          <input type="checkbox" name="privacy" id="privacy" required>
-          <span>Ho almeno 16 anni e accetto l'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a> per ricevere i messaggi della community.</span>
-        </label>
-
-        <p class="error" id="formError" role="alert" hidden></p>
-        <button class="btn ghost submit" type="submit" id="submitBtn">Scrivetemi voi</button>
-      </form>
-
-      <!-- STEP 2: facoltativo, dopo l'iscrizione -->
-      <form id="profile" novalidate hidden>
-        <p class="emoji" aria-hidden="true">🐴✨</p>
-        <h2>Sei dentro!</h2>
-        <p class="lead">Ti scriviamo presto. Se ti va, raccontaci qualcosa di te. Sono tutte domande facoltative.</p>
-
-        <label class="field">
-          <span>Come ti chiamano gli amici</span>
-          <input name="nome" id="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Es. Marco">
-        </label>
-
-        <label class="field" id="altroField">
-          <span id="altroLabel">Anche il numero WhatsApp?</span>
-          <input name="altro" id="altro" type="text">
-        </label>
-
-        <fieldset class="field personaggi">
-          <legend>Scegli la tua classe <em>(ti giudicheremo)</em></legend>
-          <div class="chips" id="chips"></div>
-          <p class="verdict" id="verdict" aria-live="polite"></p>
-        </fieldset>
-
-        <p class="error" id="profileError" role="alert" hidden></p>
-        <button class="btn submit" type="submit" id="profileBtn">Salva</button>
-        <button class="linkbtn" type="button" id="skipBtn">Salta, va bene così</button>
-      </form>
-
-      <div class="success" id="success" hidden>
-        <p class="emoji" aria-hidden="true">🍻</p>
-        <h2>Benvenuto nella mandria!</h2>
-        <p>Ci vediamo alla prossima. Porta qualcuno, più siamo meglio è.</p>
-        <button class="btn" type="button" id="shareBtn">Manda il QR a un amico 📲</button>
+      <div class="container hero-inner">
+        <img class="hero-logo" src="assets/brand/logo-completo.webp" width="720" height="720"
+             alt="Logo Stalloni dello Zodiaco: uno stallone marrone con criniera viola piena di segni zodiacali">
+        <div class="hero-copy">
+          <h1 class="headline" aria-label="Sei stato stallonato!">
+            <span class="line">Sei stato</span>
+            <span class="line big" id="stallonato">stallonato!</span>
+          </h1>
+          <p class="hero-sub">Hai trovato uno dei nostri QR. Noi siamo gli <strong>Stalloni dello Zodiaco</strong>: una community di gente presa bene che si ritrova per serate, giochi e viaggi.</p>
+          <a class="button button-primary button-large" href="#mandria">Entra nella mandria</a>
+        </div>
       </div>
     </section>
 
-    <!-- CHI SIAMO: chiarisce che è una community, non una pubblicità -->
-    <section class="about">
-      <h2>Cosa facciamo</h2>
-      <ul class="about-list">
-        <li><span aria-hidden="true">🍻</span><div><strong>Serate</strong>Uscite, aperitivi e notti lunghe con gente nuova e simpatica.</div></li>
-        <li><span aria-hidden="true">🎲</span><div><strong>Game night</strong>D&amp;D, giochi da tavolo, carte e tornei. Anche se non hai mai giocato.</div></li>
-        <li><span aria-hidden="true">✈️</span><div><strong>In giro</strong>Weekend e trasferte di gruppo, da Amsterdam a Barcellona.</div></li>
-      </ul>
-      <p class="about-note">Niente abbonamenti, niente vendite. Siamo un gruppo di amici che è cresciuto un po' troppo.</p>
+    <!-- ISCRIZIONE: WhatsApp e Instagram prima, form come alternativa -->
+    <section class="section join-section" id="mandria" aria-labelledby="mandria-title">
+      <div class="container narrow">
+        <div class="panel">
+          <div class="join" id="join">
+            <h2 id="mandria-title">Entra nella mandria</h2>
+            <p class="lead">Il modo più veloce è il gruppo WhatsApp: lì trovi le prossime uscite, i tavoli di gioco e tutta la gente.</p>
+            <a class="button button-primary button-block social" id="waBtn" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+              <span>Entra nel gruppo WhatsApp</span>
+            </a>
+            <a class="button button-secondary button-block social" id="igBtn" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0ZM21.9 8c-.1-1.6-.4-3-1.6-4.2C19 2.6 17.6 2.2 16 2.1c-1.6-.1-6.4-.1-8 0-1.6.1-3 .4-4.2 1.6C2.6 5 2.2 6.4 2.1 8c-.1 1.6-.1 6.4 0 8 .1 1.6.4 3 1.6 4.2 1.2 1.2 2.6 1.6 4.2 1.7 1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.7 1.2-1.2 1.6-2.6 1.7-4.2.1-1.6.1-6.4 0-8Zm-2.1 9.7a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.3 3.3 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7Z"/></svg>
+              <span>Seguici su Instagram</span>
+            </a>
+            <ul class="trust">
+              <li>Gratis, niente da comprare</li>
+              <li>Nessuno spam</li>
+              <li>Esci quando vuoi</li>
+            </ul>
+          </div>
+
+          <form id="signup" novalidate>
+            <p class="or"><span>oppure</span></p>
+            <h3>Preferisci che ti scriviamo noi?</h3>
+
+            <label class="field" for="contatto">
+              <span class="label">Numero di telefono o @instagram</span>
+              <input name="contatto" id="contatto" type="text" autocomplete="tel" autocapitalize="off" spellcheck="false"
+                     placeholder="Es. 333 123 4567 oppure @nomeutente" required>
+            </label>
+
+            <!-- honeypot anti-bot: gli umani non lo vedono -->
+            <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <label class="check">
+              <input type="checkbox" name="privacy" id="privacy" required>
+              <span>Ho almeno 16 anni e accetto l'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a> per ricevere i messaggi della community.</span>
+            </label>
+
+            <p class="error" id="formError" role="alert" hidden></p>
+            <button class="button button-secondary button-block" type="submit" id="submitBtn">Scrivetemi voi</button>
+          </form>
+
+          <!-- STEP 2: facoltativo, dopo l'iscrizione -->
+          <form id="profile" novalidate hidden>
+            <img class="panel-mascot" src="assets/brand/logo-mascotte.webp" width="120" height="120" alt="">
+            <h2>Sei dentro!</h2>
+            <p class="lead">Ti scriviamo presto. Se ti va, raccontaci qualcosa di te. Sono tutte domande facoltative.</p>
+
+            <label class="field" for="nome">
+              <span class="label">Come ti chiamano gli amici</span>
+              <input name="nome" id="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Es. Marco">
+            </label>
+
+            <label class="field" id="altroField" for="altro">
+              <span class="label" id="altroLabel">Il tuo numero WhatsApp, per il gruppo</span>
+              <input name="altro" id="altro" type="text">
+            </label>
+
+            <fieldset class="field personaggi">
+              <legend class="label">Scegli la tua classe <em>(ti giudicheremo)</em></legend>
+              <div class="chips" id="chips"></div>
+              <p class="verdict" id="verdict" aria-live="polite"></p>
+            </fieldset>
+
+            <p class="error" id="profileError" role="alert" hidden></p>
+            <button class="button button-primary button-block" type="submit" id="profileBtn">Salva</button>
+            <button class="linkbtn" type="button" id="skipBtn">Salta, va bene così</button>
+          </form>
+
+          <div class="success" id="success" hidden>
+            <img class="panel-mascot" src="assets/brand/logo-mascotte.webp" width="120" height="120" alt="">
+            <h2>Benvenuto nella mandria!</h2>
+            <p class="lead">Ci vediamo alla prossima. Porta qualcuno, più siamo meglio è.</p>
+            <button class="button button-secondary button-block" type="button" id="shareBtn">Manda il sito a un amico</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COSA FACCIAMO -->
+    <section class="section activities" aria-labelledby="attivita-title">
+      <div class="container">
+        <h2 class="section-title" id="attivita-title">Cosa facciamo</h2>
+        <div class="cards">
+          <article class="card card-pink">
+            <img src="assets/illustrations/serate.webp" width="800" height="533" loading="lazy"
+                 alt="Lo stallone della community brinda con una birra a una festa tropicale">
+            <h3>Serate</h3>
+            <p>Uscite, aperitivi e notti lunghe con gente nuova e simpatica.</p>
+          </article>
+          <article class="card card-cyan">
+            <img src="assets/illustrations/game-night.webp" width="800" height="450" loading="lazy"
+                 alt="Lo stallone con il controller in mano, circondato da dadi, carte e pizza">
+            <h3>Game night</h3>
+            <p>D&amp;D, giochi da tavolo, carte, videogiochi e tornei. Anche se non hai mai giocato.</p>
+          </article>
+          <article class="card card-yellow">
+            <img src="assets/illustrations/viaggi.webp" width="800" height="533" loading="lazy"
+                 alt="Lo stallone con zaino, valigia e mappa, pronto a partire">
+            <h3>Viaggi</h3>
+            <p>Weekend e trasferte di gruppo: zaino in spalla, una meta e la mandria al completo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHI SIAMO -->
+    <section class="section about" id="chi-siamo" aria-labelledby="chi-siamo-title">
+      <div class="container about-inner">
+        <img class="about-mascot" src="assets/brand/logo-mascotte.webp" width="600" height="600" loading="lazy"
+             alt="La mascotte degli Stalloni dello Zodiaco: uno stallone con occhiali da sole e criniera zodiacale">
+        <div class="about-copy">
+          <h2 class="section-title" id="chi-siamo-title">Chi siamo</h2>
+          <p>Siamo un gruppo di amici che è cresciuto un po' troppo. Ci siamo conosciuti tra un tavolo da gioco e un bancone, e a un certo punto abbiamo deciso che più gente c'è, meglio si sta.</p>
+          <p>Gli Stalloni dello Zodiaco sono questo: nerd e festaioli allo stesso tavolo, gente che parte per un weekend con due giorni di preavviso e che il giorno dopo organizza una campagna di D&amp;D.</p>
+          <ul class="values">
+            <li><strong>Nessuno resta in un angolo.</strong> Arrivi da solo, torni a casa con dieci contatti nuovi.</li>
+            <li><strong>Zero tirarsela.</strong> Non importa cosa fai nella vita, conta che ti diverti.</li>
+            <li><strong>Gratis e senza impegno.</strong> Niente abbonamenti, niente vendite: vieni quando ti va.</li>
+          </ul>
+          <a class="button button-primary" href="#mandria">Unisciti a noi</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© <span id="year"></span> Stalloni dello Zodiaco · <a href="privacy.html">Privacy</a></p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/brand/simbolo-stalloni.webp" width="48" height="48" alt="">
+      <p>© <span id="year"></span> Stalloni dello Zodiaco · <a href="privacy.html">Privacy</a></p>
+    </div>
   </footer>
 
   <script src="config.js"></script>

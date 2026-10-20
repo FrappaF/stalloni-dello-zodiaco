@@ -1,6 +1,6 @@
 (function () {
-  const COLORS = ["#ffd60a", "#2ee6e6", "#ff2e93", "#b6f22e", "#ff8a1f", "#8b5cf6"];
-  const SIGNS = "♈♉♊♋♌♍♎♏♐♑♒♓★✦";
+  // Palette del design system (stessi valori dei token in style.css)
+  const COLORS = ["#FFD323", "#00D5E8", "#FF239D", "#C1F600", "#FF7518", "#B57BFF"];
 
   // Titolo "stallonato!" lettera per lettera, ognuna col suo colore neon.
   // Parte alla fine dell'intro, così le lettere rimbalzano davanti agli occhi.
@@ -87,20 +87,6 @@
     }, 1300));
     timers.push(setTimeout(end, 2500));
     intro.addEventListener("click", end);
-  }
-
-  // Cielo con simboli zodiacali fluttuanti
-  const sky = document.querySelector(".sky");
-  for (let i = 0; i < 26; i++) {
-    const s = document.createElement("span");
-    s.textContent = SIGNS[Math.floor(Math.random() * SIGNS.length)];
-    s.style.left = Math.random() * 100 + "%";
-    s.style.top = Math.random() * 100 + "%";
-    s.style.setProperty("--s", 12 + Math.random() * 18 + "px");
-    s.style.setProperty("--c", COLORS[i % COLORS.length]);
-    s.style.setProperty("--d", 6 + Math.random() * 8 + "s");
-    s.style.animationDelay = -Math.random() * 10 + "s";
-    sky.appendChild(s);
   }
 
   // Classi in stile D&D al posto dei segni zodiacali: [icona, classe, abilità speciale]
@@ -318,7 +304,7 @@
   // Condivisione: porta altri amici nella mandria
   document.getElementById("shareBtn").addEventListener("click", async () => {
     const url = location.origin + location.pathname + "?src=share";
-    const text = "Ti hanno stallonato! 🐴 Siamo gli Stalloni dello Zodiaco, entra anche tu:";
+    const text = "Ti hanno stallonato! 🐴 Siamo gli Stalloni dello Zodiaco: serate, game night e viaggi. Entra anche tu:";
     if (navigator.share) {
       try { await navigator.share({ title: "Stalloni dello Zodiaco", text, url }); } catch (_) {}
     } else {
