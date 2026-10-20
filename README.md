@@ -6,7 +6,7 @@ Tutti i prodotti digitali della community **Stalloni dello Zodiaco**.
 
 | Cartella | Cosa | Stato |
 |---|---|---|
-| [`landing/`](landing/) | Landing "Sei stato stallonato!" aperta dal QR code, raccoglie telefono ed email | Pronta, backend del form da collegare |
+| [`landing/`](landing/) | Landing "Sei stato stallonato!" aperta dal QR code, raccoglie telefono ed email | Pronta, contatti salvati su Formspree |
 
 ## Deploy
 

@@ -5,7 +5,7 @@
 window.STALLONI_CONFIG = {
   // Formspree:     "https://formspree.io/f/xxxxxxx"
   // Google Sheets: "https://script.google.com/macros/s/xxxxxxx/exec"
-  FORM_ENDPOINT: "",
+  FORM_ENDPOINT: "https://formspree.io/f/xrpevdwb",
 
   // "formspree" legge la risposta del server; "google" invia in modalità no-cors
   // (Apps Script non restituisce header CORS, quindi la risposta non è leggibile).
