@@ -17,7 +17,7 @@
   --color-on-accent: #080910;
   --color-error: #FF6FBE;
 
-  --font-display: "Space Grotesk", "Arial Black", sans-serif;
+  --font-display: "Bangers", Impact, "Arial Black", sans-serif;
   --font-heading: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
@@ -72,7 +72,7 @@ p { margin: 0; }
 .section { padding-block: var(--section-space); }
 .section-title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 2.4rem;
   line-height: 1;
   letter-spacing: .025em;
@@ -185,7 +185,7 @@ body::before {
 
 .headline {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   line-height: .95;
   letter-spacing: .025em;
   text-transform: uppercase;
@@ -218,7 +218,7 @@ body::before {
 .panel h2 { font-size: 1.6rem; }
 .lead { color: var(--color-text-muted); }
 .join, form, .success { display: grid; gap: 14px; }
-.panel-emblem { width: 104px; height: 104px; justify-self: center; border-radius: 50%; box-shadow: var(--shadow-pink); }
+.panel-mascot { width: 104px; height: 104px; justify-self: center; border-radius: 50%; box-shadow: var(--shadow-pink); }
 #profile h2, .success h2, .success .lead { text-align: center; }
 
 .trust {
@@ -334,7 +334,7 @@ input.invalid { border-color: var(--color-error); }
 
 /* CHI SIAMO */
 .about-inner { display: grid; gap: 24px; align-items: center; }
-.about-emblem { width: min(64vw, 280px); justify-self: center; border-radius: 50%; box-shadow: var(--shadow-pink); }
+.about-mascot { width: min(64vw, 280px); justify-self: center; border-radius: 50%; box-shadow: var(--shadow-pink); }
 .about-copy { display: grid; gap: 16px; justify-items: start; }
 .about-copy p { color: var(--color-text-muted); max-width: 62ch; }
 .values { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -367,7 +367,6 @@ input.invalid { border-color: var(--color-error); }
 .stamp {
   grid-area: 1 / 1;
   font-family: var(--font-display);
-  font-weight: 700;
   font-size: clamp(2.2rem, 11vw, 5rem);
   letter-spacing: .03em;
   white-space: nowrap;
@@ -399,7 +398,7 @@ input.invalid { border-color: var(--color-error); }
   .panel { padding: 32px; }
   .cards { grid-template-columns: repeat(3, 1fr); }
   .about-inner { grid-template-columns: 2fr 3fr; gap: 48px; }
-  .about-emblem { width: 100%; max-width: 360px; }
+  .about-mascot { width: 100%; max-width: 360px; }
 }
 @media (min-width: 900px) {
   .hero {

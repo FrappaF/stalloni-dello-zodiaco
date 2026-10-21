@@ -9,8 +9,7 @@ Pagina statica (HTML/CSS/JS, nessuna build) aperta dal QR code. Pensata per smar
 | `script.js` | Animazioni, validazione e invio del form |
 | `config.js` | **Dove si configura il backend del form** |
 | `privacy.html` | Informativa privacy: completare i campi in giallo `[...]` |
-| `assets/` | Sistema visivo completo: logo, emblema, icone, sfondi, illustrazioni e anteprima social |
-| `assets/genera_asset_brand.py` | Sorgente riproducibile per rigenerare tutti gli asset secondo la brand identity |
+| `assets/` | Logo ottimizzato, favicon, immagine di anteprima per WhatsApp/social |
 
 ## Provarla in locale
 
