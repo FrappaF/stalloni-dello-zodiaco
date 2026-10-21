@@ -2,9 +2,9 @@
   // Palette del design system (stessi valori dei token in style.css)
   const COLORS = ["#FFD323", "#00D5E8", "#FF239D", "#C1F600", "#FF7518", "#B57BFF"];
 
-  // Titolo "stallonato!" lettera per lettera, ognuna col suo colore neon.
+  // Titolo principale lettera per lettera, ognuna col suo colore neon.
   // Parte alla fine dell'intro, così le lettere rimbalzano davanti agli occhi.
-  const big = document.getElementById("stallonato");
+  const big = document.getElementById("headline-accent");
   const word = big.textContent;
   big.style.visibility = "hidden";
   function buildTitle() {
@@ -285,7 +285,7 @@
       show(success);
     } catch (err) {
       console.error(err);
-      showError(profileError, "Non siamo riusciti a salvare. Riprova o salta: sei già iscritto.");
+      showError(profileError, "Non siamo riusciti a salvare. Riprova o salta: la prima adesione è già registrata.");
     }
   });
 
@@ -301,10 +301,10 @@
 
   document.getElementById("skipBtn").addEventListener("click", () => show(success));
 
-  // Condivisione: porta altri amici nella mandria
+  // Condivisione: invita altre persone nella mandria
   document.getElementById("shareBtn").addEventListener("click", async () => {
     const url = location.origin + location.pathname + "?src=share";
-    const text = "Ti hanno stallonato! 🐴 Siamo gli Stalloni dello Zodiaco: serate, game night e viaggi. Entra anche tu:";
+    const text = "Hai trovato la mandria! 🐴 Stalloni dello Zodiaco: serate, game night e viaggi. Scopri la community:";
     if (navigator.share) {
       try { await navigator.share({ title: "Stalloni dello Zodiaco", text, url }); } catch (_) {}
     } else {

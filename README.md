@@ -6,7 +6,8 @@ Tutti i prodotti digitali della community **Stalloni dello Zodiaco**.
 
 | Cartella | Cosa | Stato |
 |---|---|---|
-| [`landing/`](landing/) | Landing "Sei stato stallonato!" aperta dal QR code, raccoglie telefono ed email | Pronta, contatti salvati su Formspree |
+| [`landing/`](landing/) | Landing "Hai trovato la mandria" aperta dal QR code, raccoglie telefono ed email | Pronta, contatti salvati su Formspree |
+| [`brand/stickers/`](brand/stickers/) | Sticker coordinati al nuovo brand, con file stampa e QR tracciabili | Pronti per prova di stampa |
 
 ## Deploy
 
