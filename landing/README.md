@@ -1,4 +1,4 @@
-# Landing "Sei stato stallonato!"
+# Landing "Hai trovato la mandria"
 
 Pagina statica (HTML/CSS/JS, nessuna build) aperta dal QR code. Pensata per smartphone.
 
@@ -35,4 +35,4 @@ Finché `FORM_ENDPOINT` in `config.js` è vuoto, il form è in **modalità demo*
 
 ## Parametro sorgente
 
-Aggiungi `?src=nome` all'URL del QR (es. `?src=locandina-bar`) per sapere da dove arriva ogni iscritto: finisce nella colonna `fonte`.
+Aggiungi `?src=nome` all'URL del QR (es. `?src=locandina-bar`) per sapere da dove arriva ogni adesione: finisce nella colonna `fonte`.
