@@ -408,10 +408,17 @@ input.invalid { border-color: var(--color-error); }
       url("assets/backgrounds/hero-cosmic.webp") center / cover no-repeat,
       var(--color-bg);
   }
-  .hero-inner { grid-template-columns: auto 1fr; text-align: left; justify-items: start; gap: 48px; align-items: center; }
-  .hero-logo { width: 360px; }
+  .hero-inner {
+    grid-template-columns: minmax(260px, 360px) minmax(0, 34rem);
+    justify-content: center;
+    justify-items: stretch;
+    gap: clamp(24px, 4vw, 48px);
+    text-align: left;
+    align-items: center;
+  }
+  .hero-logo { width: min(100%, 360px); justify-self: center; }
   .hero-copy .hero-actions { justify-content: flex-start; }
-  .hero-copy { justify-items: start; padding: 28px 32px; border-radius: var(--radius-xl); background: rgba(8, 9, 16, .62); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .hero-copy { width: 100%; justify-items: start; padding: 28px 32px; border-radius: var(--radius-xl); background: rgba(8, 9, 16, .62); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
