@@ -1,38 +1,38 @@
-# Landing "Hai trovato la mandria"
+# Sito Stalloni dello Zodiaco
 
-Pagina statica (HTML/CSS/JS, nessuna build) aperta dal QR code. Pensata per smartphone.
+Sito statico HTML/CSS/JS, senza build. GitHub Pages pubblica questa cartella.
 
-| File | Cosa fa |
-|---|---|
-| `index.html` | La pagina: titolo, oroscopo scherzoso, form contatti, schermata di successo con condivisione |
-| `style.css` | Stile neon/graffiti preso dal logo |
-| `script.js` | Animazioni, validazione e invio del form |
-| `config.js` | **Dove si configura il backend del form** |
-| `privacy.html` | Informativa privacy: completare i campi in giallo `[...]` |
-| `assets/` | Logo ottimizzato, favicon, immagine di anteprima per WhatsApp/social |
+## Pagine
 
-## Provarla in locale
+- `index.html`: progetto e caccia ai QR a Savona. Vince chi trova «quello giusto», senza un numero fisso di QR.
+- `stallonati/index.html`: destinazione QR con intro «Sei stato stallonato».
+- `privacy.html`: informativa privacy.
+
+## Componenti e moduli condivisi
+
+Ogni sezione comune ha una sola sorgente in `components/`: `header.js`, `mandria.js`, `activities.js`, `about.js`, `footer.js`. Le pagine dichiarano contenitori `data-component` e caricano gli stessi componenti.
+
+`modules/site.js` espone `Stalloni.mount`, la base URL del sito e la palette condivisa. Risolve i percorsi di immagini e link rispetto alla radice del sito, anche sotto il prefisso GitHub Pages. Caricarlo prima dei componenti.
+
+`modules/community.js` gestisce il form in due passaggi, le classi, i social e la condivisione. Caricarlo dopo i componenti e `modules/config.js`.
+
+`modules/qr-intro.js` gestisce solo intro e coriandoli, ed è caricato esclusivamente su `/stallonati/`. Le CTA di iscrizione puntano a `#mandria` e non aprono questa pagina.
+
+Gli script sono classici, senza import o fetch di template: lo ZIP è consultabile anche aprendo `index.html` direttamente nel browser. Titoli, metadati e contenuti specifici delle pagine restano nei rispettivi HTML. Stili condivisi in `style.css`, stili della home in `home.css`.
+
+## Form e provenienza
+
+L’endpoint Formspree è in `modules/config.js`, insieme al profilo Instagram ufficiale `stalloni_official`. Se `FORM_ENDPOINT` è vuoto il form mostra il successo ma non salva nulla.
+
+Per usare Google Sheets, pubblicare `google-apps-script.js` come app web e impostare endpoint e `PROVIDER: "google"` nella configurazione.
+
+Il parametro `?src=...` (o `utm_source`) viene letto dal modulo su entrambe le pagine. Senza parametro la fonte è `home` sulla home e `qr` sulla destinazione QR. I QR già stampati puntano alla home con `src`; non viene implementato un sistema di verifica o assegnazione premi.
+
+## Anteprima
 
 ```bash
-cd landing && python3 -m http.server 8000
-# poi apri http://localhost:8000
+cd landing
+python3 -m http.server 8000
 ```
 
-## Collegare la raccolta contatti (da decidere)
-
-Finché `FORM_ENDPOINT` in `config.js` è vuoto, il form è in **modalità demo**: mostra il successo ma non salva niente.
-
-### Opzione A: Formspree (più semplice)
-1. Crea un account su formspree.io e un nuovo form.
-2. Copia l'URL (`https://formspree.io/f/xxxx`) in `FORM_ENDPOINT`, lascia `PROVIDER: "formspree"`.
-3. I contatti arrivano via email e si esportano in CSV. Il piano gratuito ha un limite mensile di invii.
-
-### Opzione B: Google Sheets (gratis, dati in un foglio)
-1. Crea un Google Sheet, poi *Estensioni → Apps Script*.
-2. Incolla il contenuto di [`google-apps-script.js`](google-apps-script.js) e salva.
-3. *Esegui il deployment → Nuovo deployment → App web*, "Esegui come: me", "Chi ha accesso: chiunque".
-4. Copia l'URL `/exec` in `FORM_ENDPOINT` e imposta `PROVIDER: "google"`.
-
-## Parametro sorgente
-
-Aggiungi `?src=nome` all'URL del QR (es. `?src=locandina-bar`) per sapere da dove arriva ogni adesione: finisce nella colonna `fonte`.
+Aprire `http://localhost:8000` sulla stessa macchina del server; un ambiente remoto richiede l’inoltro della porta.
