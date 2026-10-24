@@ -1,38 +1,38 @@
-# Sito Stalloni dello Zodiaco
+# Stalloni dello Zodiaco: home e pagina QR
 
-Sito statico HTML/CSS/JS, senza build. GitHub Pages pubblica questa cartella.
+Sito statico, pensato per smartphone. La **home** presenta la caccia ai QR a Savona; **`/stallonati/`** accoglie chi scopre la community. Il contatto è **[@stalloni_official](https://www.instagram.com/stalloni_official/)**. Non è previsto un gruppo WhatsApp.
 
-## Pagine
+## Modificare i contenuti
 
-- `index.html`: progetto e caccia ai QR a Savona. Vince chi trova «quello giusto», senza un numero fisso di QR.
-- `stallonati/index.html`: destinazione QR con intro «Sei stato stallonato».
-- `privacy.html`: informativa privacy.
+- `../site-source/home.html`: hero e spiegazione della caccia.
+- `../site-source/qr.html`: hero della pagina QR.
+- `../site-source/head.html`, `intro.html`: metadati e splash riservato alla pagina QR.
+- `components/*.html`: header, attività, chi siamo, contatto Instagram, FAQ, gioco delle classi e footer condivisi.
+- `style.css`: token del brand, layout responsive, font locali e movimento ridotto.
+- `modules/community.js`: gioco delle classi e condivisione. `modules/qr-intro.js`: intro breve solo su `/stallonati/`.
+- `privacy.html`: comportamenti effettivi della pagina e servizi esterni.
+- `assets/`: mascotte, illustrazioni, sfondi, immagini social e font con licenze OFL.
 
-## Componenti e moduli condivisi
-
-Ogni sezione comune ha una sola sorgente in `components/`: `header.js`, `mandria.js`, `activities.js`, `about.js`, `footer.js`. Le pagine dichiarano contenitori `data-component` e caricano gli stessi componenti.
-
-`modules/site.js` espone `Stalloni.mount`, la base URL del sito e la palette condivisa. Risolve i percorsi di immagini e link rispetto alla radice del sito, anche sotto il prefisso GitHub Pages. Caricarlo prima dei componenti.
-
-`modules/community.js` gestisce il form in due passaggi, le classi, i social e la condivisione. Caricarlo dopo i componenti e `modules/config.js`.
-
-`modules/qr-intro.js` gestisce solo intro e coriandoli, ed è caricato esclusivamente su `/stallonati/`. Le CTA di iscrizione puntano a `#mandria` e non aprono questa pagina.
-
-Gli script sono classici, senza import o fetch di template: lo ZIP è consultabile anche aprendo `index.html` direttamente nel browser. Titoli, metadati e contenuti specifici delle pagine restano nei rispettivi HTML. Stili condivisi in `style.css`, stili della home in `home.css`.
-
-## Form e provenienza
-
-L’endpoint Formspree è in `modules/config.js`, insieme al profilo Instagram ufficiale `stalloni_official`. Se `FORM_ENDPOINT` è vuoto il form mostra il successo ma non salva nulla.
-
-Per usare Google Sheets, pubblicare `google-apps-script.js` come app web e impostare endpoint e `PROVIDER: "google"` nella configurazione.
-
-Il parametro `?src=...` (o `utm_source`) viene letto dal modulo su entrambe le pagine. Senza parametro la fonte è `home` sulla home e `qr` sulla destinazione QR. I QR già stampati puntano alla home con `src`; non viene implementato un sistema di verifica o assegnazione premi.
-
-## Anteprima
+Dalla radice del repository:
 
 ```bash
-cd landing
-python3 -m http.server 8000
+python3 render-site.py
+python3 render-site.py --check
+python3 -m http.server 8000 --directory landing
 ```
 
-Aprire `http://localhost:8000` sulla stessa macchina del server; un ambiente remoto richiede l’inoltro della porta.
+Il renderer senza dipendenze scrive `index.html` e `stallonati/index.html` già completi, a partire dai componenti condivisi, e aggiorna le versioni CSS/JS basate sui contenuti. Committare anche gli HTML generati. Il deploy non richiede una build. Lettura, FAQ e collegamenti funzionano senza JavaScript e aprendo i file offline; gioco e condivisione vengono mostrati solo quando JS è disponibile.
+
+## Dati e comportamento
+
+Non ci sono moduli, invii a Formspree, analytics o raccolta di recapiti. La scelta della classe non viene salvata. `sessionStorage` conserva solo l'indicatore tecnico dell'intro, saltata con Esc, Tab o clic e con movimento ridotto. Senza memoria disponibile il sito resta utilizzabile.
+
+I QR stampati e i parametri `?src=...` restano compatibili, ma il sito non li usa per statistiche. La condivisione propone la home con `?src=share`, eliminando parametri della visita e senza diffondere la destinazione riservata ai QR.
+
+La caccia è descrittiva: non sono implementati verifica della vincita, conteggio QR o assegnazione/ritiro del premio. Non inventare queste modalità né rivelare il tipo di premio.
+
+## Pubblicazione e verifiche
+
+Il workflow `.github/workflows/pages.yml` pubblica `landing/` ai push su `main`: `https://frappaf.github.io/stalloni-dello-zodiaco/`.
+
+Criticità, risoluzioni e verifiche in [`../UI-UX-AUDIT.md`](../UI-UX-AUDIT.md). Controllare entrambe le pagine, mobile e desktop, tastiera, testo al 200%, movimento ridotto, JavaScript disattivato e alternative di condivisione.

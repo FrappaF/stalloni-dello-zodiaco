@@ -2,43 +2,33 @@
 
 ## Informazioni confermate dall’utente — 24 ottobre 2026
 
-- Gli Stalloni dello Zodiaco hanno QR sparsi per Savona.
-- Il numero di QR è indefinito. Non bisogna trovarli tutti: si vince un premio trovando «quello giusto» (chiarimento che sostituisce il brief iniziale).
-- Il premio resta una sorpresa nella comunicazione: 👀. Tipo di premio, verifica della vincita e ritiro non sono stati specificati; non inventarli.
-- La home deve spiegare il progetto e la caccia ai QR.
-- La precedente schermata «Hai trovato la mandria» va sotto `/stallonati`.
+- QR sparsi per Savona; il numero è indefinito. Non bisogna trovarli tutti: si vince un premio trovando «quello giusto».
+- Il premio resta una sorpresa 👀. Tipo, verifica della vincita e ritiro non sono stati specificati: non inventarli.
+- La home spiega progetto e caccia ai QR. «Hai trovato la mandria» rimane sotto `/stallonati/`, senza link di iscrizione diretti a questa destinazione.
+- Instagram ufficiale: `stalloni_official`. WhatsApp eliminato: l’utente ha confermato che non verrà usato.
+- Richiesta attuale: valutare UI/UX e tutto il copy, elencare criticità, risolverle e pubblicare.
 
-## Struttura e ambiente
+## Struttura
 
-- Repository: `stalloni-dello-zodiaco`; sito statico in `landing/`, senza build.
-- GitHub Pages pubblica `landing/` tramite `.github/workflows/pages.yml` ai push su `main`.
-- `landing/index.html`: home del progetto; `landing/stallonati/index.html`: schermata community con form originale.
-- CSS, script, configurazione, privacy e asset condivisi restano nella radice `landing/`.
-- Usare percorsi relativi compatibili con il prefisso GitHub Pages `/stalloni-dello-zodiaco/`.
-- I QR già stampati puntano alla home con `?src=...`; preservare la fonte nei link dalla home a `stallonati/`.
-- La caccia è descritta nella landing; non è stato implementato un sistema di tracciamento o assegnazione premi.
-- Formspree è già configurato. Link WhatsApp e Instagram non ancora configurati.
+- Sito statico in `landing/`. GitHub Pages pubblica questa cartella tramite `.github/workflows/pages.yml` ai push su `main`.
+- `landing/index.html`: home della caccia. `landing/stallonati/index.html`: pagina community per QR.
+- Percorsi relativi compatibili con `/stalloni-dello-zodiaco/` e anteprima offline. Preservare entrambi gli URL e i QR stampati.
+- Componenti comuni in `landing/components/*.html`; contenuti unici e head in `site-source/`.
+- `python3 render-site.py` genera HTML statico completo e aggiorna gli hash CSS/JS nei riferimenti. `--check` verifica che sia aggiornato. Committare gli output; nessuna build è richiesta per il deploy.
+- Questa generazione sostituisce i precedenti componenti montati via JS: contenuti e CTA devono funzionare anche senza JavaScript.
+- `landing/modules/community.js`: classi facoltative e condivisione; `qr-intro.js` è caricato solo in `/stallonati/`. Lo splash non deve apparire sulla home.
+- CTA interne per conoscere la community verso `#mandria`; Instagram apre il profilo ufficiale. Nessun link dalla home a `/stallonati/`.
 
-## Componente community condiviso
+## Revisione UI/UX
 
-- «Entra nella mandria» nella home scorre a `#mandria`, senza passare da `/stallonati/` e senza intro.
-- `landing/components/mandria.js` contiene il markup condiviso del modulo e dei social; `landing/modules/community.js` ne gestisce interazioni e invio su entrambe le pagine.
-- `landing/modules/qr-intro.js` contiene timbro, coriandoli e titolo animato; è caricato esclusivamente da `/stallonati/`, destinazione riservata ai QR.
-- Non aggiungere link di iscrizione verso `/stallonati/`: usare `#mandria`.
-- La provenienza `src` viene letta direttamente dal modulo su entrambe le pagine. Senza parametro, la home usa `home`.
+- Percorso: scoperta della caccia (home), attività, chi siamo, contatto Instagram, FAQ; gioco delle classi separato e facoltativo.
+- Il contatto avviene direttamente su Instagram. Il vecchio modulo e i backend inutilizzati sono stati rimossi: l’informativa aveva campi del titolare non compilati e il form poteva mostrare falsi successi. Nessuna raccolta di recapiti nel sito.
+- Nessuna analisi delle visite. `src` resta compatibile negli URL ma non viene elaborato. La condivisione propone sempre la home con `src=share`, senza riproporre altri parametri.
+- Classi non salvate né inviate. `sessionStorage` solo per non ripetere l’intro nella sessione. Nessuna vibrazione; movimento ridotto rispettato anche dal canvas.
+- Font locali con licenze OFL; nessuna richiesta a Google Fonts o incorporamento social.
+- Chiarire che l’assenza di abbonamento non rende gratuite tutte le uscite o i viaggi. Evitare promesse su tempi di risposta, eventi fissati o premi non confermati.
+- Criticità e verifiche in `UI-UX-AUDIT.md`.
 
-## Organizzazione condivisa
+## Pubblicazione
 
-- Tutti i componenti comuni sono in `landing/components/`: header, mandria, activities, about, footer. Il markup compare una sola volta.
-- Le utility (`Stalloni.mount`, base URL, palette), configurazione, logica community e intro sono in `landing/modules/`.
-- Caricare site.js, componenti, config.js, community.js in quest’ordine; qr-intro.js solo nella pagina QR.
-- Mantenere script classici e assenza di build per compatibilità con GitHub Pages e anteprima ZIP offline.
-- Privacy rimanda a `./#mandria` per evitare l’intro QR.
-
-## Sincronizzazione prima del deploy
-
-Integrato il commit remoto c02a8d8: Instagram ufficiale `stalloni_official`, contatti solo Instagram, nessun campo telefono o WhatsApp. Pannello iscrizione centrato con padding responsive e spaziatura uniforme.
-
-## Cache e controllo presentazione
-
-I riferimenti CSS/JS negli HTML hanno `?v=<hash contenuto>`: aggiornare gli hash quando cambiano i file per evitare stili obsoleti dalla cache. Il modulo ha distacco desktop tra 64 e 96 px, separato dalle regole mobile.
+Sincronizzare con `origin/main` prima della pubblicazione. La copia iniziale dell’ambiente era precedente al commit `7a9ccbb`: la revisione incorpora la separazione home/QR e le scelte sopra senza ripristinare la vecchia landing come home.
