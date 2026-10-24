@@ -119,7 +119,7 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Form in due step: 1) solo email o WhatsApp + consenso, 2) profilo facoltativo
+  // Form in due step: 1) Instagram + consenso, 2) profilo facoltativo
   const form = document.getElementById("signup");
   const errorBox = document.getElementById("formError");
   const btn = document.getElementById("submitBtn");
@@ -129,17 +129,13 @@
   const success = document.getElementById("success");
   const cfg = window.STALLONI_CONFIG || {};
 
-  const PHONE_RE = /^\+?[0-9\s().-]{8,20}$/;
-  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const IG_RE = /^@?(?=.*[a-z])[a-z0-9._]{2,30}$/i;
   const params = new URLSearchParams(location.search);
   const fonte = params.get("src") || params.get("utm_source") || "qr";
 
-  // Riconosce se il contatto è un'email o un numero
+  // Accetta solo un nome utente Instagram
   function kindOf(value) {
     const v = value.trim();
-    if (EMAIL_RE.test(v)) return "email";
-    if (PHONE_RE.test(v) && v.replace(/\D/g, "").length >= 8) return "telefono";
     if (IG_RE.test(v)) return "instagram";
     return null;
   }
@@ -200,14 +196,13 @@
 
   function show(el) {
     [form, profile, success].forEach((x) => { x.hidden = x !== el; });
-    // I bottoni WhatsApp/Instagram restano visibili tranne durante il profilo
+    // Il pulsante Instagram resta visibile tranne durante il profilo
     document.getElementById("join").hidden = el === profile;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   let contatto = "";
   let tipo = null;
-  let altroTipo = "telefono";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -217,7 +212,7 @@
     tipo = kindOf(input.value);
     if (!tipo) {
       input.classList.add("invalid");
-      return showError(errorBox, "Scrivi un numero di telefono o il tuo nome utente Instagram.");
+      return showError(errorBox, "Scrivi il tuo nome utente Instagram.");
     }
     if (!privacy.checked) {
       privacy.closest(".check").classList.add("invalid");
@@ -226,18 +221,6 @@
     showError(errorBox, "");
     contatto = input.value.trim();
     if (tipo === "instagram") contatto = "@" + contatto.replace(/^@/, "");
-
-    // Nello step 2 chiediamo il recapito che manca
-    const altro = document.getElementById("altro");
-    const altroLabel = document.getElementById("altroLabel");
-    altroTipo = tipo === "telefono" ? "instagram" : "telefono";
-    if (altroTipo === "instagram") {
-      altroLabel.textContent = "Il tuo @instagram, così ti seguiamo";
-      altro.type = "text"; altro.inputMode = "text"; altro.autocomplete = "off"; altro.placeholder = "@nomeutente";
-    } else {
-      altroLabel.textContent = "Il tuo numero WhatsApp, per il gruppo";
-      altro.type = "tel"; altro.inputMode = "tel"; altro.autocomplete = "tel"; altro.placeholder = "+39 333 123 4567";
-    }
 
     // Bot che compilano il campo nascosto: fingiamo successo e non inviamo nulla
     if (form.elements._gotcha.value) return show(profile);
@@ -269,17 +252,11 @@
   profile.addEventListener("submit", async (e) => {
     e.preventDefault();
     const nome = profile.elements.nome.value.trim();
-    const altro = profile.elements.altro.value.trim();
     const personaggio = (profile.querySelector("input[name=personaggio]:checked") || {}).value || "";
     profile.querySelectorAll(".invalid").forEach((el) => el.classList.remove("invalid"));
-    if (altro && kindOf(altro) !== altroTipo) {
-      profile.elements.altro.classList.add("invalid");
-      return showError(profileError, altroTipo === "telefono" ? "Il numero non sembra valido." : "Il nome utente Instagram non sembra valido.");
-    }
     showError(profileError, "");
-    if (!nome && !altro && !personaggio) return show(success);
+    if (!nome && !personaggio) return show(success);
     const fields = { step: "profilo", contatto, tipo_contatto: tipo, nome, personaggio, fonte };
-    if (altro) fields[altroTipo] = altroTipo === "instagram" ? "@" + altro.replace(/^@/, "") : altro;
     try {
       await send(fields, profileBtn, "Salvo…");
       show(success);
@@ -289,8 +266,8 @@
     }
   });
 
-  // Bottoni WhatsApp e Instagram: link da config.js, "in arrivo" finché mancano
-  [["waBtn", cfg.WHATSAPP_URL], ["igBtn", cfg.INSTAGRAM_URL]].forEach(([id, url]) => {
+  // Pulsante Instagram: link da config.js, "in arrivo" se manca
+  [["igBtn", cfg.INSTAGRAM_URL]].forEach(([id, url]) => {
     const a = document.getElementById(id);
     if (url) { a.href = url; return; }
     a.removeAttribute("href");
@@ -308,7 +285,12 @@
     if (navigator.share) {
       try { await navigator.share({ title: "Stalloni dello Zodiaco", text, url }); } catch (_) {}
     } else {
-      window.open("https://wa.me/?text=" + encodeURIComponent(text + " " + url), "_blank", "noopener");
+      try {
+        await navigator.clipboard.writeText(url);
+        document.getElementById("shareBtn").textContent = "Link copiato!";
+      } catch (_) {
+        window.prompt("Copia il link e condividilo:", url);
+      }
     }
   });
 })();

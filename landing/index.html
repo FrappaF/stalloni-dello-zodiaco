@@ -59,20 +59,16 @@
       </div>
     </section>
 
-    <!-- ISCRIZIONE: WhatsApp e Instagram prima, form come alternativa -->
+    <!-- ISCRIZIONE: Instagram prima, form come alternativa -->
     <section class="section join-section" id="mandria" aria-labelledby="mandria-title">
       <div class="container narrow">
         <div class="panel">
           <div class="join" id="join">
             <h2 id="mandria-title">Entra nella mandria</h2>
-            <p class="lead">Il modo più veloce è il gruppo WhatsApp: lì trovi le prossime uscite, i tavoli di gioco e tutta la gente.</p>
-            <a class="button button-primary button-block social" id="waBtn" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
-              <span>Entra nel gruppo WhatsApp</span>
-            </a>
-            <a class="button button-secondary button-block social" id="igBtn" href="#" target="_blank" rel="noopener">
+            <p class="lead">Seguici su Instagram: lì trovi le prossime uscite, i tavoli di gioco e tutta la gente.</p>
+            <a class="button button-primary button-block social" id="igBtn" href="https://www.instagram.com/stalloni_official/" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0ZM21.9 8c-.1-1.6-.4-3-1.6-4.2C19 2.6 17.6 2.2 16 2.1c-1.6-.1-6.4-.1-8 0-1.6.1-3 .4-4.2 1.6C2.6 5 2.2 6.4 2.1 8c-.1 1.6-.1 6.4 0 8 .1 1.6.4 3 1.6 4.2 1.2 1.2 2.6 1.6 4.2 1.7 1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.7 1.2-1.2 1.6-2.6 1.7-4.2.1-1.6.1-6.4 0-8Zm-2.1 9.7a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.3 3.3 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7Z"/></svg>
-              <span>Seguici su Instagram</span>
+              <span>Seguici su Instagram · @stalloni_official</span>
             </a>
             <ul class="trust">
               <li>Gratis, niente da comprare</li>
@@ -86,9 +82,9 @@
             <h3>Preferisci che ti scriviamo noi?</h3>
 
             <label class="field" for="contatto">
-              <span class="label">Numero di telefono o @instagram</span>
-              <input name="contatto" id="contatto" type="text" autocomplete="tel" autocapitalize="off" spellcheck="false"
-                     placeholder="Es. 333 123 4567 oppure @nomeutente" required>
+              <span class="label">Il tuo @instagram</span>
+              <input name="contatto" id="contatto" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+                     placeholder="@nomeutente" required>
             </label>
 
             <!-- honeypot anti-bot: gli umani non lo vedono -->
@@ -112,11 +108,6 @@
             <label class="field" for="nome">
               <span class="label">Nome o soprannome</span>
               <input name="nome" id="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Es. Marco">
-            </label>
-
-            <label class="field" id="altroField" for="altro">
-              <span class="label" id="altroLabel">Il tuo numero WhatsApp, per il gruppo</span>
-              <input name="altro" id="altro" type="text">
             </label>
 
             <fieldset class="field personaggi">
