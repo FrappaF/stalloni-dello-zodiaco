@@ -429,6 +429,7 @@ input.invalid { border-color: var(--color-error); }
 /* DESKTOP */
 @media (min-width: 768px) {
   .section-title { font-size: 3rem; }
+  .join-section { padding-block: clamp(64px, 6vw, 96px); }
   .panel { padding: 32px; }
   .cards { grid-template-columns: repeat(3, 1fr); }
   .about-inner { grid-template-columns: 2fr 3fr; gap: 48px; }
@@ -467,4 +468,5 @@ input.invalid { border-color: var(--color-error); }
 /* Schermi molto stretti: solo il simbolo nell'header, così "Chi siamo" ed "Entra" restano interi */
 @media (max-width: 400px) {
   .brand span { display: none; }
+  .header-nav .nav-link { display: none; }
 }

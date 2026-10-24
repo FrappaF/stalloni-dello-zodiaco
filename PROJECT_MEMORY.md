@@ -38,3 +38,7 @@
 ## Sincronizzazione prima del deploy
 
 Integrato il commit remoto c02a8d8: Instagram ufficiale `stalloni_official`, contatti solo Instagram, nessun campo telefono o WhatsApp. Pannello iscrizione centrato con padding responsive e spaziatura uniforme.
+
+## Cache e controllo presentazione
+
+I riferimenti CSS/JS negli HTML hanno `?v=<hash contenuto>`: aggiornare gli hash quando cambiano i file per evitare stili obsoleti dalla cache. Il modulo ha distacco desktop tra 64 e 96 px, separato dalle regole mobile.
