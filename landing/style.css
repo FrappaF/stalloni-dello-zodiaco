@@ -136,14 +136,39 @@ summary { cursor: pointer; }
 .footer-nav button { padding: 0; border: 0; background: none; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
 .share-feedback p:not(:empty), .share-feedback .field { margin-top: 16px; }
 .share-feedback input { min-width: 0; width: 100%; min-height: 48px; padding: 12px; border: 1px solid #75678e; border-radius: var(--radius-sm); color: var(--color-text); background: var(--color-surface); }
-/* Intro breve e progressiva: mai un ostacolo quando JS non è disponibile. */
-.intro { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: radial-gradient(circle at 50% 45%,#241245,var(--color-bg) 70%); cursor: pointer; animation: intro-out .25s ease-in 1.55s forwards; }
-.intro-logo { grid-area: 1 / 1; width: min(70vw,320px); border-radius: var(--radius-xl); animation: intro-logo .55s cubic-bezier(.2,1.1,.4,1) both; }
-.stamp { grid-area: 1 / 1; padding: 6px 14px; border: 4px solid var(--color-lime); border-radius: var(--radius-md); color: var(--color-lime); background: #080910dc; font: 400 clamp(1.15rem,5.3vw,3.5rem)/1.2 var(--font-display); letter-spacing: .02em; text-transform: uppercase; white-space: nowrap; transform: rotate(-8deg); animation: stamp .25s ease-out .65s both; }
-.intro-skip { position: absolute; bottom: max(32px,env(safe-area-inset-bottom,0px)); min-height: 48px; padding: 10px 20px; color: var(--color-text); background: var(--color-surface); border: 1px solid #75678e; border-radius: var(--radius-md); cursor: pointer; }
-@keyframes intro-logo { from { transform: scale(.8) rotate(-12deg); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes stamp { from { transform: rotate(-8deg) scale(1.3); opacity: 0; } }
-@keyframes intro-out { to { opacity: 0; visibility: hidden; } }
+/* La firma degli Stalloni: orbita neon, mascotte e timbro a impatto. */
+.intro { position: fixed; inset: 0; z-index: 50; overflow: clip; isolation: isolate; background: #080910; cursor: pointer; }
+.intro::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .28; background: linear-gradient(#08091075,#080910b0),url("assets/backgrounds/hero-cosmic.webp") center / cover; }
+.intro-topline { position: absolute; top: max(24px,env(safe-area-inset-top,0px)); inset-inline: 20px; text-align: center; color: var(--color-cyan); font: 600 .65rem/1.4 var(--font-heading); letter-spacing: .22em; text-transform: uppercase; }
+.intro-scene { position: absolute; inset: 0; display: grid; place-items: center; }
+.intro-grid { position: absolute; inset: -30%; background-image: linear-gradient(#00d5e80c 1px,transparent 1px),linear-gradient(90deg,#00d5e80c 1px,transparent 1px); background-size: 54px 54px; transform: rotate(-15deg); mask-image: radial-gradient(ellipse,#000,transparent 65%); animation: grid-enter .9s ease-out both; }
+.intro-halo { position: absolute; width: min(125vw,750px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle,#8026ce60 0%,#ff239d20 34%,transparent 66%); box-shadow: inset 0 0 100px #00d5e81a; animation: halo-enter 1s ease-out both; }
+.intro-zodiac { position: absolute; width: min(96vw,550px); aspect-ratio: 1; border: 1px solid #00d5e855; border-radius: 50%; box-shadow: 0 0 35px #00d5e81a,inset 0 0 35px #ff239d18; animation: orbit-enter 1.4s cubic-bezier(.2,.8,.2,1) both; }
+.intro-zodiac::before { content: ""; position: absolute; inset: 20px; border: 1px dashed #b57bff55; border-radius: 50%; }
+.intro-zodiac span { position: absolute; left: 50%; top: 50%; font: 400 clamp(16px,4.5vw,26px)/1 serif; color: var(--color-cyan); text-shadow: 0 0 14px currentColor; transform: translate(-50%,-50%) rotate(calc(var(--n) * 30deg)) translateY(calc(-1 * min(48vw,275px))) rotate(calc(var(--n) * -30deg)); }
+.intro-zodiac span:nth-child(3n) { color: var(--color-pink); }
+.intro-zodiac span:nth-child(3n + 1) { color: var(--color-yellow); }
+.intro-composition { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; transform: translateY(-8px); }
+.intro-emblem { position: relative; width: min(70vw,320px); }
+.intro-emblem::after { content: ""; position: absolute; inset: -12%; border: 3px solid var(--color-cyan); border-radius: 50%; opacity: 0; box-shadow: 0 0 20px #00d5e880,0 0 60px #ff239d50; animation: impact-ring .8s ease-out 1.15s both; }
+.intro-logo { width: 100%; border-radius: var(--radius-xl); box-shadow: 0 0 50px #ff239d40,0 24px 80px #0009; animation: intro-logo .95s cubic-bezier(.2,1.25,.4,1) both; }
+.stamp { position: relative; display: grid; justify-items: center; gap: 3px; margin-top: -12px; padding: 10px 24px 12px; max-width: calc(100vw - 44px); color: #080910; background: var(--color-lime); border: 3px solid #080910; outline: 2px solid #f5f3ff; border-radius: 4px; box-shadow: 7px 7px 0 #ff239d,-5px -5px 0 #00d5e8,0 16px 70px #000b; transform: rotate(-8deg); text-transform: uppercase; animation: stamp .35s cubic-bezier(.5,0,.7,1.35) .95s both; }
+.stamp-kicker { font: 700 clamp(.7rem,2.8vw,.9rem)/1 var(--font-heading); letter-spacing: .3em; padding-left: .3em; }
+.stamp-word { font: 400 clamp(2.65rem,15vw,5.7rem)/.95 var(--font-display); letter-spacing: .025em; white-space: nowrap; }
+.intro-tagline { margin-top: 28px; color: var(--color-text); text-align: center; font: 600 clamp(.7rem,2.7vw,.9rem)/1.5 var(--font-heading); text-transform: uppercase; letter-spacing: .16em; animation: tagline-enter .45s ease-out 1.3s both; }
+.intro-skip { position: absolute; z-index: 2; bottom: max(24px,env(safe-area-inset-bottom,0px)); left: 50%; transform: translateX(-50%); display: inline-flex; gap: 20px; align-items: center; min-height: 48px; padding: 10px 18px; color: var(--color-text); background: #080910d9; border: 1px solid #75678e; border-radius: 100px; font: 500 .85rem var(--font-heading); cursor: pointer; }
+.intro.skip { animation: intro-out .3s ease-in forwards; }
+.intro.shake .intro-scene { animation: shake .45s cubic-bezier(.36,.07,.19,.97); }
+@keyframes intro-logo { from { transform: scale(0) rotate(-540deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes stamp { from { transform: rotate(-8deg) scale(4); opacity: 0; } to { transform: rotate(-8deg) scale(1); opacity: 1; } }
+@keyframes intro-out { to { opacity: 0; visibility: hidden; transform: scale(1.04); } }
+@keyframes orbit-enter { from { transform: scale(.35) rotate(-70deg); opacity: 0; } to { transform: scale(1) rotate(8deg); opacity: .8; } }
+@keyframes grid-enter { from { transform: rotate(-15deg) scale(1.3); opacity: 0; } }
+@keyframes halo-enter { from { transform: scale(.4); opacity: 0; } }
+@keyframes impact-ring { 0% { transform: scale(.5); opacity: 0; } 15% { opacity: .8; } 100% { transform: scale(1.8); opacity: 0; } }
+@keyframes tagline-enter { from { transform: translateY(12px); opacity: 0; letter-spacing: .3em; } }
+@keyframes shake { 10%,90% { transform: translate(-2px,1px); } 20%,80% { transform: translate(5px,-3px); } 30%,50%,70% { transform: translate(-7px,4px) rotate(-.8deg); } 40%,60% { transform: translate(7px,-4px) rotate(.8deg); } }
+@media (max-height: 580px) { .intro-emblem { width: min(40vh,220px); } .stamp-word { font-size: min(10vw,12vh); } .intro-tagline { margin-top: 20px; } .intro-composition { transform: translateY(-6px); } }
 .confetti { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
 .legal { max-width: 760px; padding-block: 28px 64px; }
 .legal h1 { margin-block: 24px 16px; }
@@ -185,3 +210,9 @@ summary { cursor: pointer; }
 .hunt-steps p { color: var(--color-text-muted); }
 .hunt-note { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-top: 24px; border-top: 1px solid var(--color-line); }
 @media (max-width: 767px) { .hunt-steps { grid-template-columns: 1fr; gap: 24px; } }
+
+.title-enter .ch { animation: bounce .6s cubic-bezier(.3,1.8,.5,1) both; animation-delay: calc(var(--i) * 50ms + 150ms); }
+@keyframes bounce { from { transform: translateY(-50px) scale(.4); opacity: 0; } }
+.intro-replay { border: 0; padding: 0; background: none; color: var(--color-cyan); text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+/* Queste regole seguono anche le animazioni ripristinate. */
+@media (prefers-reduced-motion: reduce) { .intro, .intro-replay { display: none; } .title-enter .ch { animation: none; } }

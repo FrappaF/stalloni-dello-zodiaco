@@ -20,15 +20,26 @@
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/bangers-latin-400-normal.woff2" crossorigin>
   <link rel="preload" as="image" href="../assets/brand/logo-completo.webp">
-  <link rel="stylesheet" href="../style.css?v=1ac4c5548995">
+  <link rel="stylesheet" href="../style.css?v=2fa4245e1762">
   <script src="../modules/community.js?v=fa4645176e20" defer></script>
-  <script src="../modules/qr-intro.js?v=5d71629eb20b" defer></script>
+  <script src="../modules/qr-intro.js?v=4f3996e050dd" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#top">Vai al contenuto</a>
   <div class="intro" id="intro" hidden>
-    <img class="intro-logo" src="../assets/brand/logo-completo.webp" width="320" height="320" alt="">
-    <div class="stamp" aria-hidden="true">Hai trovato la mandria!</div>
+    <p class="intro-topline" aria-hidden="true">Savona · Stalloni dello Zodiaco</p>
+    <div class="intro-scene" aria-hidden="true">
+      <div class="intro-grid"></div>
+      <div class="intro-halo"></div>
+      <div class="intro-zodiac">
+        <span style="--n:0">♈</span><span style="--n:1">♉</span><span style="--n:2">♊</span><span style="--n:3">♋</span><span style="--n:4">♌</span><span style="--n:5">♍</span><span style="--n:6">♎</span><span style="--n:7">♏</span><span style="--n:8">♐</span><span style="--n:9">♑</span><span style="--n:10">♒</span><span style="--n:11">♓</span>
+      </div>
+      <div class="intro-composition">
+        <div class="intro-emblem"><img class="intro-logo" src="../assets/brand/logo-completo.webp" width="320" height="320" alt=""></div>
+        <div class="stamp"><span class="stamp-kicker">Sei stato</span><span class="stamp-word">Stallonato</span></div>
+        <p class="intro-tagline">Benvenuto nella mandria.</p>
+      </div>
+    </div>
     <button class="intro-skip" id="introSkip" type="button">Salta intro <span aria-hidden="true">→</span></button>
   </div>
   <header class="site-header">
@@ -51,6 +62,7 @@
           <p class="hero-sub">Siamo gli <strong>Stalloni dello Zodiaco</strong>: gente presa bene, un tavolo da condividere e una scusa per uscire. Puoi arrivare anche senza conoscere nessuno.</p>
           <div class="hero-actions"><a class="button button-primary button-large" href="https://www.instagram.com/stalloni_official/">Ci trovi su Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M21 3 10 14M10 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-6"/></svg></a><a class="text-link" href="#attivita">Scopri cosa facciamo <span aria-hidden="true">↓</span></a></div>
           <p class="hero-note">Il nostro profilo è <strong>@stalloni_official</strong></p>
+          <button class="text-link intro-replay" id="introReplay" type="button" hidden>Rivedi l’intro <span aria-hidden="true">↺</span></button>
         </div>
       </div>
     </section>    <section class="section activities" id="attivita" aria-labelledby="attivita-title">

@@ -9,7 +9,7 @@ Sito statico, pensato per smartphone. La **home** presenta la caccia ai QR a Sav
 - `../site-source/head.html`, `intro.html`: metadati e splash riservato alla pagina QR.
 - `components/*.html`: header, attività, chi siamo, contatto Instagram, FAQ, gioco delle classi e footer condivisi.
 - `style.css`: token del brand, layout responsive, font locali e movimento ridotto.
-- `modules/community.js`: gioco delle classi e condivisione. `modules/qr-intro.js`: intro breve solo su `/stallonati/`.
+- `modules/community.js`: gioco delle classi e condivisione. `modules/qr-intro.js`: splash animato con orbita zodiacale, timbro e coriandoli solo su `/stallonati/`.
 - `privacy.html`: comportamenti effettivi della pagina e servizi esterni.
 - `assets/`: mascotte, illustrazioni, sfondi, immagini social e font con licenze OFL.
 
@@ -25,7 +25,7 @@ Il renderer senza dipendenze scrive `index.html` e `stallonati/index.html` già 
 
 ## Dati e comportamento
 
-Non ci sono moduli, invii a Formspree, analytics o raccolta di recapiti. La scelta della classe non viene salvata. `sessionStorage` conserva solo l'indicatore tecnico dell'intro, saltata con Esc, Tab o clic e con movimento ridotto. Senza memoria disponibile il sito resta utilizzabile.
+Non ci sono moduli, invii a Formspree, analytics o raccolta di recapiti. La scelta della classe non viene salvata. `sessionStorage` conserva solo l'indicatore tecnico dell'intro, saltata con Esc, Tab o clic e con movimento ridotto. Senza memoria disponibile il sito resta utilizzabile. Lo splash dura 2,8 secondi più dissolvenza e si può ripetere con «Rivedi l’intro».
 
 I QR stampati e i parametri `?src=...` restano compatibili, ma il sito non li usa per statistiche. La condivisione propone la home con `?src=share`, eliminando parametri della visita e senza diffondere la destinazione riservata ai QR.
 

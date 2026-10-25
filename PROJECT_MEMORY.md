@@ -16,7 +16,7 @@
 - Componenti comuni in `landing/components/*.html`; contenuti unici e head in `site-source/`.
 - `python3 render-site.py` genera HTML statico completo e aggiorna gli hash CSS/JS nei riferimenti. `--check` verifica che sia aggiornato. Committare gli output; nessuna build è richiesta per il deploy.
 - Questa generazione sostituisce i precedenti componenti montati via JS: contenuti e CTA devono funzionare anche senza JavaScript.
-- `landing/modules/community.js`: classi facoltative e condivisione; `qr-intro.js` è caricato solo in `/stallonati/`. Lo splash non deve apparire sulla home.
+- `landing/modules/community.js`: classi facoltative e condivisione; `qr-intro.js` è caricato solo in `/stallonati/`. Lo splash non deve apparire sulla home. L’utente ha chiesto di mantenere le animazioni e renderlo iconico: rotazione completa del logo, orbita zodiacale neon, grande timbro «SEI STATO STALLONATO», onda d’impatto, tremolio, coriandoli e titolo a rimbalzo. Non semplificare di nuovo la sequenza; dura 2,8 secondi più dissolvenza e si può ripetere con «Rivedi l’intro».
 - CTA interne per conoscere la community verso `#mandria`; Instagram apre il profilo ufficiale. Nessun link dalla home a `/stallonati/`.
 
 ## Revisione UI/UX

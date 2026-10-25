@@ -18,7 +18,7 @@ Brand preservato: mascotte, illustrazioni, palette neon, Bangers / Space Grotesk
 | Media | «Gratis, niente da comprare» confondeva adesione alla community e costi delle attività. | Nessun abbonamento alla community; costi di uscite, locali e viaggi da verificare per ogni attività. |
 | Media | Testi generici e promesse «Sei dentro», «Ti scriviamo presto» senza un esito corrispondente. | CTA che descrivono l’apertura del profilo e copy concreto su come conoscere il gruppo, senza tempi di risposta promessi. |
 | Media | Dubbi di chi arriva da solo, non ha esperienza di gioco o cerca le prossime attività. | FAQ accessibili con elementi nativi `details`/`summary`, disponibili anche senza JS. |
-| Media | Splash lungo, non saltabile da tastiera, vibrazione e animazione canvas non sempre coerente con movimento ridotto. | Intro di 1,8 secondi solo sulla pagina QR, saltata con pulsante/clic, Esc o Tab; disattivata con movimento ridotto e nelle visite con ancora. Nessuna vibrazione. |
+| Media | Splash non saltabile da tastiera, vibrazione e animazione canvas non sempre coerente con movimento ridotto. | Splash di 2,8 secondi più dissolvenza solo sulla pagina QR, saltata con pulsante/clic, Esc o Tab; disattivata con movimento ridotto e nelle visite con ancora. Nessuna vibrazione. |
 | Media | Il titolo a lettere separate poteva produrre una lettura frammentata con tecnologie assistive. | Nome accessibile completo sull’H1 e lettere decorative nascoste agli screen reader. |
 | Media | Il gioco delle classi era legato al profilo, mischiava divertimento e raccolta dati. | Bonus pubblico e facoltativo, separato dal contatto; scelta non salvata né inviata, radio navigabili da tastiera e risultato annunciato. |
 | Media | Condivisione senza feedback e dipendente da WhatsApp nel fallback. | Condivisione nativa, copia negli appunti con conferma e link selezionabile in caso di permessi negati. Annullamento gestito senza errori. Nessuna dipendenza da WhatsApp. |
@@ -44,3 +44,11 @@ Brand preservato: mascotte, illustrazioni, palette neon, Bangers / Space Grotesk
 ## Limiti e informazioni da non inventare
 
 La caccia rimane descrittiva: il progetto non contiene un sistema di verifica della vincita, conteggio QR, assegnazione o ritiro del premio. Non sono state aggiunte regole o promesse non confermate. L’apertura del profilo Instagram è collegata all’account indicato dall’utente; disponibilità dell’app, login e Direct dipendono da Instagram. Le prove browser sono state eseguite in Chromium, senza verifica su dispositivi fisici iOS/Android.
+
+## Aggiornamento splash — 25 ottobre 2026
+
+Su richiesta dell’utente, lo splash di `/stallonati/` è stato reso più riconoscibile: logo in rotazione completa, orbita con dodici simboli zodiacali neon, alone e griglia sullo sfondo cosmico, onda d’impatto, grande timbro lime «SEI STATO STALLONATO» con bordi cyan/magenta, tremolio, esplosione di coriandoli e titolo a rimbalzo dopo l’uscita. Durata 2,8 secondi più dissolvenza, senza vibrazione.
+
+«Rivedi l’intro» permette di ripetere l’esperienza nella stessa sessione. Il valore tecnico della sessione è aggiornato per mostrare la nuova sequenza anche a chi aveva visto la versione precedente. Restano salto con clic/Tab/Esc, ripristino del focus, preferenza movimento ridotto anche quando cambia a pagina aperta, contenuti disponibili senza JavaScript e home senza splash.
+
+Verificato in Chromium a 320×720, 390×844, 1440×900 e 844×390: animazioni attive, canvas con coriandoli, nessun overflow orizzontale, uscita automatica, replay, focus e comportamento tra visite. Controllati movimento ridotto, sua modifica durante lo splash, JavaScript disattivato e assenza dell’intro nella home. Nessun errore JavaScript nelle prove. Esaminati screenshot dell’impatto e del timbro leggibile.
